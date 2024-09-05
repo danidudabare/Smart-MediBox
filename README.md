@@ -140,17 +140,6 @@ The Node-RED flow is designed to process the data from the light sensors and app
 4. **Monitor Light Intensity**: Observe real-time light intensity changes and the side with the highest light intensity on the right-hand panel.
 5. **Track Light Intensity Variation**: Monitor the light intensity trend over the last hour with the provided chart.
 
-## Conclusion
-
-This system effectively automates the position control of a shaded window based on environmental light conditions, with the flexibility of user input to modify the behavior in real-time.
-
-## Future Improvements
-
-- Additional configuration options for different environments or window sizes.
-- Integration with other smart home systems for more automated responses.
-- Improved visualization of sensor data over longer periods of time.
-
-
 ## How to Use
 
 1. **Wi-Fi Setup**: Modify the Wi-Fi SSID and password in the `setupWifi()` function if needed.
@@ -171,7 +160,3 @@ This system effectively automates the position control of a shaded window based 
 3. Upload the code to your ESP32.
 
 4. Monitor the serial output to ensure the system is functioning correctly.
-
----
-
-This project aims to create an automated system to help users maintain a consistent medicine schedule while providing additional features like environmental monitoring and light control.
