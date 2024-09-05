@@ -1,0 +1,508 @@
+[
+    {
+        "id": "d152203b8fa1e2d8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "adf1710d96b8970d",
+        "type": "ui_gauge",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "group": "ea21f6d3917df957",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Highest Light Intensity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "0.35",
+        "seg2": "0.7",
+        "diff": false,
+        "className": "",
+        "x": 520,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "76323fde2a6b6af3",
+        "type": "ui_chart",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "group": "ea21f6d3917df957",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Light Intensity Variation (Last 1 hour)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 570,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2a07b8e12bdc1c8d",
+        "type": "ui_text",
+        "z": "d152203b8fa1e2d8",
+        "group": "ea21f6d3917df957",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Highest Light Intensity Side",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 540,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "45c70b4513727665",
+        "type": "mqtt in",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "topic": "LIGHT INTENSITY",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5c620a4660fe044e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "adf1710d96b8970d",
+                "76323fde2a6b6af3"
+            ]
+        ]
+    },
+    {
+        "id": "de5f37071ffcf70e",
+        "type": "mqtt in",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "topic": "LIGHT INTENSITY SIDE",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5c620a4660fe044e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 250,
+        "y": 280,
+        "wires": [
+            [
+                "2a07b8e12bdc1c8d"
+            ]
+        ]
+    },
+    {
+        "id": "cc14de7e43f1aa70",
+        "type": "mqtt out",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "topic": "ANGLE OFFSET",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5c620a4660fe044e",
+        "x": 1410,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "00e8a61cad943253",
+        "type": "ui_slider",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "label": "Minimum Angle",
+        "tooltip": "",
+        "group": "8e5f69e35fa5a1a1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "120",
+        "step": 1,
+        "className": "",
+        "x": 1060,
+        "y": 360,
+        "wires": [
+            [
+                "cc14de7e43f1aa70"
+            ]
+        ]
+    },
+    {
+        "id": "712ff6cff18c6f55",
+        "type": "ui_slider",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "label": "Controlling Factor",
+        "tooltip": "",
+        "group": "8e5f69e35fa5a1a1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "1",
+        "step": "0.01",
+        "className": "",
+        "x": 1070,
+        "y": 580,
+        "wires": [
+            [
+                "8c55a328afbb7d21"
+            ]
+        ]
+    },
+    {
+        "id": "8c55a328afbb7d21",
+        "type": "mqtt out",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "topic": "CONTROLLING FACTOR",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5c620a4660fe044e",
+        "x": 1430,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "e07a60772de89c3a",
+        "type": "ui_dropdown",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "label": "Select Your Option",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "8e5f69e35fa5a1a1",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Tablet A",
+                "value": "a",
+                "type": "str"
+            },
+            {
+                "label": "Tablet B",
+                "value": "b",
+                "type": "str"
+            },
+            {
+                "label": "Tablet C",
+                "value": "c",
+                "type": "str"
+            },
+            {
+                "label": "Custom",
+                "value": "custom",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "payload",
+        "topicType": "msg",
+        "className": "",
+        "x": 150,
+        "y": 520,
+        "wires": [
+            [
+                "cc1f5c092fc348f9"
+            ]
+        ]
+    },
+    {
+        "id": "cc1f5c092fc348f9",
+        "type": "switch",
+        "z": "d152203b8fa1e2d8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "a",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "b",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "c",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "custom",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 490,
+        "y": 520,
+        "wires": [
+            [
+                "75c7d3ed364ebbbe",
+                "d76bf79367f0ff53"
+            ],
+            [
+                "88923d65a965ad78",
+                "0b1a89c2d5fa1300"
+            ],
+            [
+                "e58ec3aad00b20fc",
+                "05d0287b270ff161"
+            ],
+            [
+                "00e8a61cad943253",
+                "712ff6cff18c6f55"
+            ]
+        ]
+    },
+    {
+        "id": "75c7d3ed364ebbbe",
+        "type": "function",
+        "z": "d152203b8fa1e2d8",
+        "name": "Angle A",
+        "func": "return {\n    payload: 30\n    \n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 360,
+        "wires": [
+            [
+                "00e8a61cad943253"
+            ]
+        ]
+    },
+    {
+        "id": "d76bf79367f0ff53",
+        "type": "function",
+        "z": "d152203b8fa1e2d8",
+        "name": "CF A",
+        "func": "return {\n    payload: 0.25\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 400,
+        "wires": [
+            [
+                "712ff6cff18c6f55"
+            ]
+        ]
+    },
+    {
+        "id": "88923d65a965ad78",
+        "type": "function",
+        "z": "d152203b8fa1e2d8",
+        "name": "Angle B",
+        "func": "return {\n    payload: 60\n    \n    \n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 460,
+        "wires": [
+            [
+                "00e8a61cad943253"
+            ]
+        ]
+    },
+    {
+        "id": "0b1a89c2d5fa1300",
+        "type": "function",
+        "z": "d152203b8fa1e2d8",
+        "name": "CF B",
+        "func": "return {\n    payload: 0.5\n    \n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 500,
+        "wires": [
+            [
+                "712ff6cff18c6f55"
+            ]
+        ]
+    },
+    {
+        "id": "e58ec3aad00b20fc",
+        "type": "function",
+        "z": "d152203b8fa1e2d8",
+        "name": "Angle C",
+        "func": "return {\n    payload: 90\n    \n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 560,
+        "wires": [
+            [
+                "00e8a61cad943253"
+            ]
+        ]
+    },
+    {
+        "id": "05d0287b270ff161",
+        "type": "function",
+        "z": "d152203b8fa1e2d8",
+        "name": "CF A",
+        "func": "return {\n    payload: 0.75\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 600,
+        "wires": [
+            [
+                "712ff6cff18c6f55"
+            ]
+        ]
+    },
+    {
+        "id": "ea21f6d3917df957",
+        "type": "ui_group",
+        "name": "Light Intensity",
+        "tab": "5a335597395e3837",
+        "order": 2,
+        "disp": true,
+        "width": 9,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5c620a4660fe044e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org/",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "8e5f69e35fa5a1a1",
+        "type": "ui_group",
+        "name": "Position of The Shaded Window",
+        "tab": "5a335597395e3837",
+        "order": 1,
+        "disp": true,
+        "width": 11,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5a335597395e3837",
+        "type": "ui_tab",
+        "name": "MediBox",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
