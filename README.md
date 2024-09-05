@@ -88,6 +88,69 @@ Runs the selected mode from the menu, such as setting the time or alarms.
 ### `updateLightIntensity()`
 Reads data from the LDR sensors and adjusts the servo motor's angle to control the light intensity.
 
+## Node-RED Dashboard Overview
+
+The Node-RED dashboard is divided into two main sections:
+
+### 1. **Position of The Shaded Window** (Left Panel)
+This section allows the user to configure the position and behavior of the shaded window with the following controls:
+- **Controlling Factor**: A multiplier that scales the final position of the window. This factor can be adjusted using a slider.
+- **Minimum Angle**: A slider that sets the minimum angle for the window, ensuring the window does not drop below a specified value.
+- **Select Your Option**: A dropdown menu allowing the user to select between different preset configurations for the window position (e.g., "Tablet A").
+
+### 2. **Light Intensity Monitoring** (Right Panel)
+This section provides real-time information about the light intensity, as measured by sensors, and includes:
+- **Highest Light Intensity**: A gauge displaying the current light intensity (in normalized units), showing the highest measured value.
+- **Highest Light Intensity Side**: Displays which side (e.g., "LEFT" or "RIGHT") has the highest light intensity.
+- **Light Intensity Variation (Last 1 hour)**: A line chart tracking the variation of light intensity over the last hour, useful for identifying changes in ambient lighting conditions.
+
+## Node-RED Flow Overview
+
+The Node-RED flow is designed to process the data from the light sensors and apply user configurations to control the shaded window position. Below is an overview of the flow:
+
+### 1. **Light Intensity & Light Intensity Side** (Upper Nodes)
+- **Light Intensity**: This node collects real-time data from the light intensity sensors.
+- **Light Intensity Variation**: Tracks and displays the variation in light intensity over time (last 1 hour).
+- **Light Intensity Side**: Determines which side has the highest light intensity and sends this data to the dashboard.
+
+### 2. **Angle and Controlling Factor Calculations** (Middle Nodes)
+- **Switch Node**: This node selects different behavior or configuration options based on the user’s selection from the dashboard (e.g., "Tablet A").
+- **Angle & Controlling Factor Nodes**: These nodes calculate the window angle and controlling factor based on the light intensity data and user settings. Each calculation is handled in separate function nodes (`Angle A`, `CF A`, `Angle B`, etc.).
+
+### 3. **Angle Offset and Controlling Factor Outputs** (Right Side Nodes)
+- **Minimum Angle and Controlling Factor Output**: The calculated values are fed into these output nodes to adjust the actual position of the shaded window. These values are also linked back to the sliders in the dashboard so the user can adjust and monitor them in real-time.
+
+## System Architecture
+
+1. **Sensors**: Light intensity sensors provide real-time data about the light levels in different areas.
+2. **Node-RED Flow**: Processes the sensor data and computes the appropriate shaded window position based on user inputs.
+3. **Dashboard**: A user-friendly interface for real-time monitoring and adjustment of system parameters.
+
+### Screenshot of the Node-RED Dashboard:
+![Dashboard](./path-to-your-dashboard-image.jpg)
+
+### Screenshot of the Node-RED Flow:
+![Flow](./path-to-your-flow-image.png)
+
+## How to Use the System
+
+1. **Adjusting the Controlling Factor**: Use the "Controlling Factor" slider to modify the multiplier that affects the window's position.
+2. **Setting the Minimum Angle**: Use the "Minimum Angle" slider to ensure that the window does not fall below the set angle.
+3. **Select Your Option**: Choose from different predefined configurations (e.g., "Tablet A") for different window behaviors.
+4. **Monitor Light Intensity**: Observe real-time light intensity changes and the side with the highest light intensity on the right-hand panel.
+5. **Track Light Intensity Variation**: Monitor the light intensity trend over the last hour with the provided chart.
+
+## Conclusion
+
+This system effectively automates the position control of a shaded window based on environmental light conditions, with the flexibility of user input to modify the behavior in real-time.
+
+## Future Improvements
+
+- Additional configuration options for different environments or window sizes.
+- Integration with other smart home systems for more automated responses.
+- Improved visualization of sensor data over longer periods of time.
+
+
 ## How to Use
 
 1. **Wi-Fi Setup**: Modify the Wi-Fi SSID and password in the `setupWifi()` function if needed.
