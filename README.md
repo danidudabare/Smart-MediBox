@@ -1,5 +1,8 @@
 # Smart Medibox
 
+### Connected Circuit:
+![Dashboard](https://github.com/danidudabare/Smart-MediBox/blob/00687b49e9b41d4bd3d1784504dca8644b3af1a3/Images/WOKWi%20Circuit.jpg)
+
 This project is a "Smart Medibox" that helps users set alarms for their medicine schedule, monitor temperature and humidity, and adjust lighting intensity automatically. The system also displays real-time information like date and time on an OLED display.
 
 ## Components
@@ -126,10 +129,10 @@ The Node-RED flow is designed to process the data from the light sensors and app
 2. **Node-RED Flow**: Processes the sensor data and computes the appropriate shaded window position based on user inputs.
 3. **Dashboard**: A user-friendly interface for real-time monitoring and adjustment of system parameters.
 
-### Screenshot of the Node-RED Dashboard:
+### Node-RED Dashboard:
 ![Dashboard](https://github.com/danidudabare/Smart-MediBox/blob/00687b49e9b41d4bd3d1784504dca8644b3af1a3/Images/Node%20Red%20Dashboard.jpg)
 
-### Screenshot of the Node-RED Flow:
+### Node-RED Flow:
 ![Flow](https://github.com/danidudabare/Smart-MediBox/blob/00687b49e9b41d4bd3d1784504dca8644b3af1a3/Images/Node%20Red%20Flow.png)
 
 ## How to Use the System
