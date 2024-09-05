@@ -3,7 +3,7 @@
 ### Connected Circuit:
 ![Dashboard](https://github.com/danidudabare/Smart-MediBox/blob/00687b49e9b41d4bd3d1784504dca8644b3af1a3/Images/WOKWi%20Circuit.jpg)
 
-This project is a "Smart Medibox" that helps users set alarms for their medicine schedule, monitor temperature and humidity, and adjust lighting intensity automatically. The system also displays real-time information like date and time on an OLED display.
+This project is a "Smart Medibox" that helps users set alarms for their medicine schedule, monitor temperature and humidity, and adjust lighting intensity automatically. The system also displays real-time information like date and time on an OLED display. The system provides real-time monitoring and control through a Node-RED dashboard, with MQTT used for real-time communication.
 
 ## Components
 
